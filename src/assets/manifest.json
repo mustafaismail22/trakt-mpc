@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "TraktForMPC",
+  "description": "TraktForMPC",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "static/favicon.323e0e.png",
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "http://localhost/",
+    "storage"
+  ]
+}

@@ -1,0 +1,22 @@
+- var scripts = htmlWebpackPlugin.files.js || []
+- var styles = htmlWebpackPlugin.files.css || []
+- var favicon = require('./assets/favicon.png') || ''
+- var manifest = require('-!file-loader?name=[name].[ext]!./assets/manifest.json') || ''
+- var jquery = require('-!file-loader?name=js/[name].[ext]!jquery/dist/jquery.min.js') || ''
+html
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="shortcut icon", href=favicon)    
+    each href in styles
+      link(rel="stylesheet", href=href)
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans")
+    title TraktForMPC
+  body.no-js
+    #root
+      dev.loading Loading...
+      
+    script(src=jquery)
+    each src in scripts
+      script(src=src)
