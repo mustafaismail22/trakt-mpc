@@ -1,0 +1,143 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background: #0E0C21;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: inherit;
+}
+
+#root {
+    position: relative;
+    width: 350px;
+}
+
+#header {
+    position: relative;
+    height: 140px;
+    background: rgba(255, 255, 255, 0.05);
+    /* background: linear-gradient(180deg, rgba(15, 13, 34, 0.7) 0%, rgba(255, 255, 255, 0) 100%), url(The-Big-Bang-Theory.jpg);
+    opacity: 0.45;
+    filter: blur(10px);
+    border-radius: 2px; */
+}
+
+.cover {
+    background-size: cover;
+    background-position: center;
+    opacity: 0.45;
+    &, &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+    }
+
+    &::before {
+        z-index: 1;
+        content: '';
+        background: linear-gradient(180deg, rgba(15, 13, 34, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+}
+
+.details {
+    position: absolute;
+    bottom: 10px;
+    left: 110px;
+    right: 20px;
+}
+
+.show-title {
+    display: none;
+    font-size: 9px;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 3px;
+    span.season {
+        font-size: 6px;
+        &::before {
+            content: '-';
+            margin: 0 3px
+        }
+    }
+}
+
+.episode-title, .movie-title {
+    display: none;
+    font-weight: 500;
+    font-size: 12px;
+    span.episode {
+        font-size: 14px;
+        &::after {
+            content: '-';
+            margin: 0 3px
+        }
+    }
+    span.year {
+        &::before {
+            content: '-';
+            margin: 0 3px
+        }
+    }
+}
+
+.poster {
+    position: absolute;
+    width: 80px;
+    left: 0;
+    top: 0;
+    transform: translateY(-60%);
+    border: 2px solid #0E0C21;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 2px; 
+    img {
+        max-width: 100%;
+    }   
+}
+
+.container {
+    margin: 0 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.action-buttons {
+    margin: 10px 20px 020px 85px;
+}
+
+.btn {
+    border: 1px solid #1B9BAE;
+    border-radius: 2px;
+    padding: 10px 15px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.btn:hover {
+    background-color: #1B9BAE;
+}
+
+.overview {
+    font-weight: 300;
+    line-height: 15px;
+    font-size: 10px;
+}

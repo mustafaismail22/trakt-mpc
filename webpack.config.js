@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -15,7 +16,7 @@ module.exports = {
     filename: `js/[name]${!debug ? '.[chunkhash:6]' : ''}.js`,
     chunkFilename: 'js/[name].[id].[chunkhash:6].chunk.js',
     publicPath: '/',
-    libraryTarget: 'umd',
+    // libraryTarget: 'umd',
     pathinfo: debug
   },
   module: {
@@ -23,13 +24,13 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
-        include: srcPath
+        // include: srcPath
       },
       {
         exclude: [
           /\.(html|jade|pug)$/,
           /\.(js|jsx)$/,
-          // /\.(css|scss|sass)$/,
+          /\.(css|scss|sass)$/,
           /\.json$/
         ],
         loader: 'file-loader',
@@ -40,6 +41,29 @@ module.exports = {
       {
         test: /\.(jade|pug)$/,
         loader: 'pug-loader?pretty=\t'
+      },
+      {
+        test: /\.(css|scss|sass)$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [
+                  require('autoprefixer')({
+                    browsers: [
+                      'last 2 versions'
+                    ]
+                  })
+                ]
+              }
+            },
+            'sass-loader'
+          ]
+        })
       }
     ]
   },
@@ -47,6 +71,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(srcPath, 'index.pug'),
       inject: false
+    }),
+    new ExtractTextPlugin({
+      filename: `css/[name]${!debug ? '.[chunkhash:6]' : ''}.css`,
+      allChunks: true
     }),
     new webpack.IgnorePlugin(/^electron$/)
   ],

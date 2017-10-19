@@ -82,4 +82,4 @@ class MPC {
     }
 };
 
-module.exports = MPC;
+export default MPC;

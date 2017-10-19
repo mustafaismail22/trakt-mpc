@@ -11,12 +11,31 @@ html
     link(rel="shortcut icon", href=favicon)    
     each href in styles
       link(rel="stylesheet", href=href)
-    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto")
     title TraktForMPC
   body.no-js
     #root
-      dev.loading Loading...
-      
+      header#header
+        .cover(style="background-image: url('');")
+        .details
+          h2.show-title
+            span.title
+            span.season
+          h1.episode-title
+            span.episode
+            span.title
+          h1.movie-title
+            span.title
+            span.year
+      .container
+        .poster
+          img(src="", alt="Poster")
+        .action-buttons
+          a(class="btn"  href="#") Watch
+          a(class="btn"  href="#") Check In
+        .overview
+          p
+          
     script(src=jquery)
     each src in scripts
       script(src=src)
